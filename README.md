@@ -2,6 +2,12 @@
 
 A full-stack machine learning application for ECG image classification using a TensorFlow/Keras CNN model, a FastAPI backend, and a React + Vite frontend dashboard.
 
+## Live Demo
+
+Frontend deployment on Vercel:
+
+https://vercel.com/amirthavanans-projects/ecg-classification/86RjsBgT2iWjF5cv6ASG7otjn1nj
+
 ## Project Objective
 
 This project is designed to:
