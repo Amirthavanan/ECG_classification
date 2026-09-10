@@ -11,6 +11,7 @@ from .config import (
     IMG_WIDTH,
     IMG_HEIGHT,
 )
+from .preprocessing import preprocessor
 
 class ECGModelService:
     def __init__(self):
@@ -53,15 +54,14 @@ class ECGModelService:
             self.error = str(exc)
 
     def preprocess(self, image_bytes: bytes):
-        from io import BytesIO
+        return preprocessor.prepare_tensor(image_bytes)
 
-        image = Image.open(BytesIO(image_bytes)).convert("RGB")
-        image = image.resize((IMG_WIDTH, IMG_HEIGHT))
-
-        array = np.asarray(image, dtype=np.float32) / 255.0
-        array = np.expand_dims(array, axis=0)
-
-        return array
+    def preprocess_and_extract(self, image_bytes: bytes):
+        return preprocessor.process(
+            image_bytes,
+            model=self.model if self.loaded else None,
+            extract_cnn=True,
+        )
 
     def predict(self, image_bytes: bytes):
         if not self.loaded:

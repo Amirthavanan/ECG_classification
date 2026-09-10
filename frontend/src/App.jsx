@@ -15,7 +15,7 @@ import ImageUploader from "./components/ImageUploader";
 import PredictionCard from "./components/PredictionCard";
 import ProbabilityChart from "./components/ProbabilityChart";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "https://ecg-api-production.up.railway.app";
 
 export default function App() {
   const [file, setFile] = useState(null);
